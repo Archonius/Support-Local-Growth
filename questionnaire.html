@@ -7,7 +7,7 @@
 <meta name="description" content="Tell us about your business and your website requirements to begin the build process.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -39,33 +39,69 @@
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">Get started</p>
-    <h1>Tell us about your business and your website.</h1>
-    <p class="lede">This takes about ten minutes. The more detail you give us, the closer the first draft lands to what you want &mdash; but nothing here is final, and everything can be refined during your revision period.</p>
+    <h1>Tell us exactly what your website needs to contain.</h1>
+    <p class="lede">This form is deliberately structured &mdash; mostly ticks, choices and short answers rather than paragraphs. The more precisely you answer, the more accurately we can build your site from these answers alone.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
     <div class="form-note">
-      Submitting this form does not charge you. We&rsquo;ll confirm eligibility and send a payment link for the &pound;250 build fee before any work begins.
+      Submitting this form does not charge you until you confirm a hosting plan at the bottom. Your final answer there starts the build.
     </div>
 
     <form class="questionnaire" novalidate>
 
       <fieldset>
-        <legend>1. Your business</legend>
+        <legend>1. Your business &amp; contact details</legend>
+
+        <div class="elig-check">
+          <span class="q">Have you read the eligibility requirements and do you meet the criteria for subsidised web development?</span>
+          <div class="radio-row">
+            <label><input type="radio" name="eligibility-confirm" value="yes" required> Yes</label>
+            <label><input type="radio" name="eligibility-confirm" value="no"> No</label>
+          </div>
+          <span class="hint">See the full criteria on the <a href="eligibility.html">Eligibility &amp; FAQ</a> page.</span>
+        </div>
+
         <div class="field">
           <label for="biz-name">Business name</label>
           <input type="text" id="biz-name" name="biz-name" required>
         </div>
         <div class="field">
-          <label for="biz-type">What does your business do?</label>
-          <span class="hint">A sentence or two &mdash; e.g. &ldquo;independent hair salon offering cuts, colour and bridal styling.&rdquo;</span>
-          <textarea id="biz-type" name="biz-type" required></textarea>
+          <label for="contact-name">Your name</label>
+          <input type="text" id="contact-name" name="contact-name" required>
         </div>
         <div class="field">
-          <label for="biz-location">Town / city and county</label>
-          <input type="text" id="biz-location" name="biz-location" required>
+          <label for="contact-email">Email address</label>
+          <input type="email" id="contact-email" name="contact-email" required>
+        </div>
+        <div class="field">
+          <label for="contact-phone">Phone number</label>
+          <input type="tel" id="contact-phone" name="contact-phone" required>
+        </div>
+        <div class="field">
+          <label for="biz-category">What kind of business is it?</label>
+          <select id="biz-category" name="biz-category" required data-reveal-select="biz-category-other" data-reveal-value="other">
+            <option value="" disabled selected>Choose a category</option>
+            <option value="food-drink">Food &amp; drink</option>
+            <option value="trades-construction">Trades &amp; construction</option>
+            <option value="health-beauty">Health &amp; beauty</option>
+            <option value="pet-services">Pet services</option>
+            <option value="retail">Retail &amp; shop</option>
+            <option value="professional-services">Professional &amp; consulting services</option>
+            <option value="creative-events">Creative, events &amp; photography</option>
+            <option value="home-garden">Home &amp; garden services</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field" id="biz-category-other" style="display:none;">
+          <label for="biz-category-other-text">Please specify</label>
+          <input type="text" id="biz-category-other-text" name="biz-category-other-text">
+        </div>
+        <div class="field">
+          <label for="biz-type">In one or two sentences, what does your business do?</label>
+          <textarea id="biz-type" name="biz-type" required style="min-height:70px;"></textarea>
         </div>
         <div class="field">
           <label for="biz-employees">Number of employees (including you)</label>
@@ -81,23 +117,11 @@
       </fieldset>
 
       <fieldset>
-        <legend>2. Hosting tier</legend>
-        <div class="field">
-          <label>Which hosting tier do you want?</label>
-          <div class="radio-row">
-            <label><input type="radio" name="tier" value="self-hosted" required> Self-Hosted &mdash; &pound;250, no monthly fee</label>
-            <label><input type="radio" name="tier" value="standard"> Standard &mdash; &pound;250 + &pound;15/mo</label>
-            <label><input type="radio" name="tier" value="pro"> Pro &mdash; &pound;250 + &pound;30/mo</label>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>3. Domain name</legend>
+        <legend>2. Domain name</legend>
         <div class="field">
           <label>Do you already own a domain name?</label>
           <div class="radio-row">
-            <label><input type="radio" name="has-domain" value="yes" data-reveal-trigger="domain-existing"> Yes, I own one already</label>
+            <label><input type="radio" name="has-domain" value="yes" data-reveal-trigger="domain-existing" required> Yes, I own one already</label>
             <label><input type="radio" name="has-domain" value="no" data-reveal-trigger="domain-wanted"> No, help me choose one</label>
           </div>
         </div>
@@ -113,7 +137,7 @@
       </fieldset>
 
       <fieldset>
-        <legend>4. Pages &amp; content</legend>
+        <legend>3. Pages &amp; content</legend>
         <div class="field">
           <label>Which pages do you need?</label>
           <div class="check-row">
@@ -122,19 +146,18 @@
             <label><input type="checkbox" name="pages" value="services"> Services / What we offer</label>
             <label><input type="checkbox" name="pages" value="gallery"> Gallery / Portfolio</label>
             <label><input type="checkbox" name="pages" value="pricing"> Pricing / Price list</label>
-            <label><input type="checkbox" name="pages" value="testimonials"> Testimonials / Reviews</label>
             <label><input type="checkbox" name="pages" value="faq"> FAQ</label>
-            <label><input type="checkbox" name="pages" value="contact"> Contact</label>
+            <label><input type="checkbox" name="pages" value="other" data-reveal-trigger="pages-other"> Other</label>
           </div>
         </div>
-        <div class="field">
-          <label for="content-text">Do you have existing text (copy) you&rsquo;d like used, or should we write it from your notes?</label>
-          <textarea id="content-text" name="content-text" placeholder="Paste existing text here, or describe what each page should say."></textarea>
+        <div class="field" id="pages-other" style="display:none;">
+          <label for="pages-other-text">Additional page(s)</label>
+          <input type="text" id="pages-other-text" name="pages-other-text" placeholder="e.g. Careers, Case studies">
         </div>
         <div class="field">
           <label for="content-images">What images do you have available?</label>
           <div class="radio-row">
-            <label><input type="radio" name="images" value="own-photos"> I have my own photos</label>
+            <label><input type="radio" name="images" value="own-photos" required> I have my own photos</label>
             <label><input type="radio" name="images" value="need-stock"> I&rsquo;ll need stock imagery</label>
             <label><input type="radio" name="images" value="mix"> A mix of both</label>
           </div>
@@ -146,51 +169,155 @@
             <label><input type="checkbox" name="features" value="map"> Map / directions</label>
             <label><input type="checkbox" name="features" value="social"> Social media links</label>
             <label><input type="checkbox" name="features" value="opening-hours"> Opening hours</label>
-            <label><input type="checkbox" name="features" value="newsletter-link"> Link to external newsletter sign-up</label>
+            <label><input type="checkbox" name="features" value="newsletter"> Newsletter sign-up</label>
+            <label><input type="checkbox" name="features" value="other" data-reveal-trigger="features-other"> Other</label>
           </div>
+        </div>
+        <div class="field" id="features-other" style="display:none;">
+          <label for="features-other-text">Additional feature(s)</label>
+          <input type="text" id="features-other-text" name="features-other-text" placeholder="e.g. Live chat, downloadable menu">
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>5. Look &amp; feel</legend>
+        <legend>4. Design &amp; style</legend>
         <div class="field">
-          <label for="brand-colours">Do you have existing brand colours or a logo?</label>
+          <label>Pick your colour scheme</label>
+          <span class="hint">These become your primary (buttons, headings) and secondary (accents, highlights) colours.</span>
+          <div class="colour-row">
+            <div class="colour-field">
+              <input type="color" id="colour-primary" name="colour-primary" value="#14274E">
+              <span>
+                <span class="cf-label">Primary colour</span>
+                <span class="cf-hint">Main brand colour</span>
+              </span>
+            </div>
+            <div class="colour-field">
+              <input type="color" id="colour-secondary" name="colour-secondary" value="#A47C1B">
+              <span>
+                <span class="cf-label">Secondary colour</span>
+                <span class="cf-hint">Accents &amp; highlights</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Do you already have a logo?</label>
           <div class="radio-row">
-            <label><input type="radio" name="has-brand" value="yes"> Yes, I&rsquo;ll send them over</label>
-            <label><input type="radio" name="has-brand" value="no"> No, please suggest something</label>
+            <label><input type="radio" name="has-logo" value="yes" required> Yes, I&rsquo;ll send it over separately by email</label>
+            <label><input type="radio" name="has-logo" value="no"> No, please suggest something simple</label>
           </div>
         </div>
         <div class="field">
-          <label for="style-notes">How should the site feel?</label>
-          <span class="hint">E.g. &ldquo;warm and traditional,&rdquo; &ldquo;bold and modern,&rdquo; &ldquo;calm and minimal.&rdquo; Reference websites you like are welcome.</span>
-          <textarea id="style-notes" name="style-notes"></textarea>
-        </div>
-        <div class="field">
-          <label for="competitors">Any competitor or similar business websites we should look at?</label>
-          <input type="text" id="competitors" name="competitors" placeholder="Links, separated by commas">
+          <label>How should the site feel? Choose the closest match.</label>
+          <div class="theme-picker">
+        <label class="theme-card">
+          <input type="radio" name="style-theme" value="professional">
+          <span class="t-name">Professional &amp; Corporate</span>
+          <span class="t-desc">Clean lines, confident tone, built for trust</span>
+        </label>
+        <label class="theme-card">
+          <input type="radio" name="style-theme" value="traditional">
+          <span class="t-name">Warm &amp; Traditional</span>
+          <span class="t-desc">Classic layout, timeless and reassuring</span>
+        </label>
+        <label class="theme-card">
+          <input type="radio" name="style-theme" value="bold">
+          <span class="t-name">Bold &amp; Modern</span>
+          <span class="t-desc">Strong colour, big type, contemporary feel</span>
+        </label>
+        <label class="theme-card">
+          <input type="radio" name="style-theme" value="natural">
+          <span class="t-name">Natural &amp; Organic</span>
+          <span class="t-desc">Earthy tones, soft edges, outdoors feel</span>
+        </label>
+        <label class="theme-card">
+          <input type="radio" name="style-theme" value="minimal">
+          <span class="t-name">Minimal &amp; Clean</span>
+          <span class="t-desc">Lots of white space, understated, precise</span>
+        </label>
+        <label class="theme-card">
+          <input type="radio" name="style-theme" value="playful">
+          <span class="t-name">Playful &amp; Friendly</span>
+          <span class="t-desc">Bright, approachable, informal tone</span>
+        </label>
+        <label class="theme-card">
+          <input type="radio" name="style-theme" value="elegant">
+          <span class="t-name">Luxury &amp; Elegant</span>
+          <span class="t-desc">Refined type, muted palette, premium feel</span>
+        </label>
+        <label class="theme-card">
+          <input type="radio" name="style-theme" value="rustic">
+          <span class="t-name">Rustic &amp; Handcrafted</span>
+          <span class="t-desc">Textured, artisanal, hand-made character</span>
+        </label>
+          </div>
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>6. Contact details</legend>
-        <div class="field">
-          <label for="contact-name">Your name</label>
-          <input type="text" id="contact-name" name="contact-name" required>
+        <legend>5. Choose your hosting plan</legend>
+        <div class="tier-callout">
+          <strong>&pound;250</strong> one-off website build fee &mdash; included in every plan below. The amounts shown in the table are the ongoing monthly hosting fee only.
         </div>
-        <div class="field">
-          <label for="contact-email">Email address</label>
-          <input type="email" id="contact-email" name="contact-email" required>
-        </div>
-        <div class="field">
-          <label for="contact-phone">Phone number</label>
-          <input type="tel" id="contact-phone" name="contact-phone">
-        </div>
-        <div class="field">
-          <label class="check-row"><input type="checkbox" name="confirm-eligible" required> I confirm my business meets the eligibility criteria set out on the <a href="eligibility.html">Eligibility &amp; FAQ</a> page.</label>
-        </div>
+        <table class="tier-table">
+          <thead>
+            <tr>
+              <th>&nbsp;</th>
+              <th>Self-Hosted</th>
+              <th class="featured-col">Standard</th>
+              <th>Pro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monthly hosting fee</td>
+              <td class="monthly-fee">&pound;0</td>
+              <td class="monthly-fee">&pound;15</td>
+              <td class="monthly-fee">&pound;30</td>
+            </tr>
+            <tr>
+              <td>Website hosting</td>
+              <td class="no">&#10007;</td>
+              <td class="yes">&#10003;</td>
+              <td class="yes">&#10003;</td>
+            </tr>
+            <tr>
+              <td>SSL security certificate</td>
+              <td class="no">&#10007;</td>
+              <td class="yes">&#10003;</td>
+              <td class="yes">&#10003;</td>
+            </tr>
+            <tr>
+              <td>Technical support</td>
+              <td class="no">&#10007;</td>
+              <td class="yes">&#10003;</td>
+              <td class="yes">Priority</td>
+            </tr>
+            <tr>
+              <td>SEO</td>
+              <td><span class="tag-basic">Basic</span></td>
+              <td><span class="tag-basic">Basic</span></td>
+              <td><span class="tag-enhanced">Enhanced</span></td>
+            </tr>
+            <tr>
+              <td>Monthly health check</td>
+              <td class="no">&#10007;</td>
+              <td class="no">&#10007;</td>
+              <td class="yes">&#10003;</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td><button type="submit" class="tier-submit" name="tier" value="self-hosted">Confirm plan &amp; submit</button></td>
+              <td><button type="submit" class="tier-submit" name="tier" value="standard">Confirm plan &amp; submit</button></td>
+              <td><button type="submit" class="tier-submit" name="tier" value="pro">Confirm plan &amp; submit</button></td>
+            </tr>
+          </tfoot>
+        </table>
       </fieldset>
 
-      <button class="btn btn-primary" type="submit">Submit questionnaire</button>
       <p id="form-status" role="status" style="display:none; margin-top:18px; max-width:60ch; color:var(--ink-soft);"></p>
     </form>
   </div>
