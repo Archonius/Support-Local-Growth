@@ -9,17 +9,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Reveal a target field when a specific radio/checkbox (carrying data-reveal-trigger)
-  // within its name-group is checked.
+  // is itself checked. Each trigger only controls its own target, even when
+  // other options in the same name-group also carry a reveal-trigger.
   document.querySelectorAll('[data-reveal-trigger]').forEach(function (trigger) {
     var targetId = trigger.getAttribute('data-reveal-trigger');
     var target = document.getElementById(targetId);
     if (!target) return;
     var group = document.getElementsByName(trigger.name);
     function sync() {
-      var show = Array.prototype.some.call(group, function (el) {
-        return el.checked && el.dataset.revealTrigger !== undefined;
-      });
-      target.style.display = show ? 'block' : 'none';
+      target.style.display = trigger.checked ? 'block' : 'none';
     }
     Array.prototype.forEach.call(group, function (el) { el.addEventListener('change', sync); });
     sync();
