@@ -50,7 +50,12 @@
       Submitting this form does not charge you until you confirm a hosting plan at the bottom. Your final answer there starts the build.
     </div>
 
-    <form class="questionnaire" novalidate>
+    <form class="questionnaire" action="https://formsubmit.co/robertcbowen@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Support Local Growth questionnaire submission">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" id="formsubmit-next" value="https://buy.stripe.com/bJe6ozdtI1n5784g701Fe01">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
       <fieldset>
         <legend>1. Your business &amp; contact details</legend>
@@ -318,7 +323,6 @@
         </table>
       </fieldset>
 
-      <p id="form-status" role="status" style="display:none; margin-top:18px; max-width:60ch; color:var(--ink-soft);"></p>
     </form>
   </div>
 </section>

@@ -40,24 +40,28 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Questionnaire: three "Confirm plan and submit" buttons at the bottom each
-  // carry their own name/value so we know which tier was chosen on submit.
+  // carry their own name/value (self-hosted / standard / pro). Before the form
+  // submits to FormSubmit, we set the hidden _next field to the matching live
+  // Stripe Payment Link, so FormSubmit emails the questionnaire answers to
+  // robertcbowen@gmail.com and then sends the customer straight to checkout
+  // for the plan they chose.
+  var PAYMENT_LINKS = {
+    "self-hosted": "https://buy.stripe.com/bJe6ozdtI1n5784g701Fe01",
+    "standard": "https://buy.stripe.com/eVq14f9dsghZ4ZWdYS1Fe00",
+    "pro": "https://buy.stripe.com/bJebITexM5Dl0JG4oi1Fe02"
+  };
+
   var form = document.querySelector('form.questionnaire');
   if (form) {
     form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var status = document.getElementById('form-status');
-      var chosenTier = e.submitter && e.submitter.value ? e.submitter.value : null;
-      if (status) {
-        var tierLabel = {
-          'self-hosted': 'Self-Hosted',
-          'standard': 'Standard',
-          'pro': 'Pro'
-        }[chosenTier] || null;
-        status.textContent = (tierLabel ? 'Plan selected: ' + tierLabel + '. ' : '') +
-          'This is a demo submit for now. Wire this form up to your backend or a form-handling service (e.g. Formspree, Netlify Forms) to receive real submissions and trigger payment.';
-        status.style.display = 'block';
-        status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var chosenTier = e.submitter && e.submitter.value;
+      var nextInput = document.getElementById('formsubmit-next');
+      if (nextInput && chosenTier && PAYMENT_LINKS[chosenTier]) {
+        nextInput.value = PAYMENT_LINKS[chosenTier];
       }
+      // No preventDefault — the form submits normally to FormSubmit, which
+      // emails the answers and then redirects the customer to the _next URL
+      // (the Payment Link set above) automatically.
     });
   }
 });
