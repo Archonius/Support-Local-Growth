@@ -268,8 +268,8 @@ section{padding:56px 0;}
   content:""; position:absolute; left:23px; top:48px; bottom:0;
   width:2px; background:var(--grey-mid);
 }
-.step h3{font-size:1.1rem; margin-bottom:0.3em; padding-top:8px;}
-.step p{font-size:0.96rem; color:var(--ink-soft); margin-bottom:0;}
+.step h3{font-size:1.1rem; margin-bottom:0.3em; padding-top:8px; grid-column:2;}
+.step p{font-size:0.96rem; color:var(--ink-soft); margin-bottom:0; grid-column:2;}
 .section-dark .step::after{background:rgba(255,255,255,0.25);}
 .section-dark .step p{color:#D6DDE9;}
 
@@ -295,7 +295,16 @@ section{padding:56px 0;}
   background:var(--white); padding:30px 26px; border:1px solid var(--grey-line); border-top:4px solid var(--grey-mid);
   box-shadow:var(--shadow-sm); position:relative;
 }
-.price-card.featured{border-top-color:var(--navy); box-shadow:var(--shadow-md);}
+.price-card.featured{
+  border-color:var(--navy); box-shadow:var(--shadow-md);
+  background:var(--navy); color:var(--white);
+}
+.price-card.featured .tier-name,
+.price-card.featured .price-sub{color:#C7D1E3;}
+.price-card.featured .price-amount{color:var(--white);}
+.price-card.featured .price-amount span{color:#C7D1E3;}
+.price-card.featured .btn-primary{background:var(--white); color:var(--navy); border-color:var(--white);}
+.price-card.featured .btn-primary:hover{background:var(--gold-bg); color:var(--navy); border-color:var(--gold-bg);}
 .price-card .ribbon{
   position:absolute; top:-1px; right:20px;
   background:var(--gold); color:var(--white);
@@ -306,7 +315,7 @@ section{padding:56px 0;}
   display:inline-block; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;
   background:var(--navy); color:var(--white); padding:4px 10px; border-radius:var(--radius); margin-bottom:14px;
 }
-.price-card.featured .tier-tag{background:var(--green);}
+.price-card.featured .tier-tag{background:var(--gold); color:var(--white);}
 .price-card .tier-name{font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-soft); margin-bottom:0.2em;}
 .price-amount{font-size:2.2rem; font-weight:700; margin:0.1em 0 0; color:var(--ink); font-family:var(--font-display);}
 .price-amount span{font-size:0.9rem; font-weight:500; text-transform:none; letter-spacing:0; color:var(--ink-soft); font-family:var(--font-body);}
@@ -442,7 +451,9 @@ table.tier-table th, table.tier-table td{
 }
 table.tier-table th:last-child, table.tier-table td:last-child{border-right:none;}
 table.tier-table th{font-weight:700; background:var(--navy); color:var(--white); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.03em;}
-table.tier-table th.featured-col{background:var(--navy-dark);}
+table.tier-table th.pro-col{background:var(--gold); color:var(--white);}
+table.tier-table td.pro-col{background:var(--gold-bg);}
+table.tier-table tbody tr:nth-child(even) td.pro-col{background:#EFE4C6;}
 table.tier-table td:first-child, table.tier-table th:first-child{text-align:left; font-weight:600;}
 table.tier-table tbody tr:nth-child(even){background:var(--grey-bg);}
 table.tier-table .monthly-fee{font-family:var(--font-display); font-size:1.3rem; font-weight:700;}
