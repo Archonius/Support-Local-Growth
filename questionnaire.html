@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Started — Support Local Growth</title>
+<meta name="description" content="Tell us about your business and your website requirements to begin the build process.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<rect x="3" y="14" width="26" height="15" fill="#F7F3E5" stroke="#F7F3E5" stroke-width="1"/>
+<polygon points="16,4 30,14 2,14" fill="#B62428"/>
+<rect x="8" y="19" width="16" height="10" fill="#17233A"/>
+<rect x="10.5" y="21" width="11" height="6" fill="#D6A23C"/>
+</svg>Support Local Growth</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">MENU</button>
+    <nav class="main-nav">
+      <a class="" href="index.html">Home</a>
+      <a class="" href="pricing.html">Pricing</a>
+      <a class="" href="eligibility.html">Eligibility &amp; FAQ</a>
+      <a class="" href="contact.html">Contact</a>
+      <a class="nav-cta" href="questionnaire.html">Get started</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Get started</p>
+    <h1>Tell us about your business and your website.</h1>
+    <p class="lede">This takes about ten minutes. The more detail you give us, the closer the first draft lands to what you want &mdash; but nothing here is final, and everything can be refined during your revision period.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="form-note">
+      Submitting this form does not charge you. We&rsquo;ll confirm eligibility and send a payment link for the &pound;250 build fee before any work begins.
+    </div>
+
+    <form class="questionnaire" novalidate>
+
+      <fieldset>
+        <legend>1. Your business</legend>
+        <div class="field">
+          <label for="biz-name">Business name</label>
+          <input type="text" id="biz-name" name="biz-name" required>
+        </div>
+        <div class="field">
+          <label for="biz-type">What does your business do?</label>
+          <span class="hint">A sentence or two &mdash; e.g. &ldquo;independent hair salon offering cuts, colour and bridal styling.&rdquo;</span>
+          <textarea id="biz-type" name="biz-type" required></textarea>
+        </div>
+        <div class="field">
+          <label for="biz-location">Town / city and county</label>
+          <input type="text" id="biz-location" name="biz-location" required>
+        </div>
+        <div class="field">
+          <label for="biz-employees">Number of employees (including you)</label>
+          <input type="text" id="biz-employees" name="biz-employees" required>
+        </div>
+        <div class="field">
+          <label>Is your business independently owned, with no parent company or franchise agreement?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="independent" value="yes" required> Yes</label>
+            <label><input type="radio" name="independent" value="no"> No</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Hosting tier</legend>
+        <div class="field">
+          <label>Which hosting tier do you want?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="tier" value="self-hosted" required> Self-Hosted &mdash; &pound;250, no monthly fee</label>
+            <label><input type="radio" name="tier" value="standard"> Standard &mdash; &pound;250 + &pound;15/mo</label>
+            <label><input type="radio" name="tier" value="pro"> Pro &mdash; &pound;250 + &pound;30/mo</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Domain name</legend>
+        <div class="field">
+          <label>Do you already own a domain name?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="has-domain" value="yes" data-reveal-trigger="domain-existing"> Yes, I own one already</label>
+            <label><input type="radio" name="has-domain" value="no" data-reveal-trigger="domain-wanted"> No, help me choose one</label>
+          </div>
+        </div>
+        <div class="field" id="domain-existing" style="display:none;">
+          <label for="domain-name">Your existing domain</label>
+          <input type="text" id="domain-name" name="domain-name" placeholder="yourbusiness.co.uk">
+        </div>
+        <div class="field" id="domain-wanted" style="display:none;">
+          <label for="domain-preference">Preferred domain name(s)</label>
+          <span class="hint">List one or two options in order of preference &mdash; we&rsquo;ll confirm availability.</span>
+          <input type="text" id="domain-preference" name="domain-preference" placeholder="e.g. yourbusinessname.co.uk">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. Pages &amp; content</legend>
+        <div class="field">
+          <label>Which pages do you need?</label>
+          <div class="check-row">
+            <label><input type="checkbox" name="pages" value="home"> Home</label>
+            <label><input type="checkbox" name="pages" value="about"> About</label>
+            <label><input type="checkbox" name="pages" value="services"> Services / What we offer</label>
+            <label><input type="checkbox" name="pages" value="gallery"> Gallery / Portfolio</label>
+            <label><input type="checkbox" name="pages" value="pricing"> Pricing / Price list</label>
+            <label><input type="checkbox" name="pages" value="testimonials"> Testimonials / Reviews</label>
+            <label><input type="checkbox" name="pages" value="faq"> FAQ</label>
+            <label><input type="checkbox" name="pages" value="contact"> Contact</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="content-text">Do you have existing text (copy) you&rsquo;d like used, or should we write it from your notes?</label>
+          <textarea id="content-text" name="content-text" placeholder="Paste existing text here, or describe what each page should say."></textarea>
+        </div>
+        <div class="field">
+          <label for="content-images">What images do you have available?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="images" value="own-photos"> I have my own photos</label>
+            <label><input type="radio" name="images" value="need-stock"> I&rsquo;ll need stock imagery</label>
+            <label><input type="radio" name="images" value="mix"> A mix of both</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Which of these do you need?</label>
+          <div class="check-row">
+            <label><input type="checkbox" name="features" value="contact-form"> Contact form</label>
+            <label><input type="checkbox" name="features" value="map"> Map / directions</label>
+            <label><input type="checkbox" name="features" value="social"> Social media links</label>
+            <label><input type="checkbox" name="features" value="opening-hours"> Opening hours</label>
+            <label><input type="checkbox" name="features" value="newsletter-link"> Link to external newsletter sign-up</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>5. Look &amp; feel</legend>
+        <div class="field">
+          <label for="brand-colours">Do you have existing brand colours or a logo?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="has-brand" value="yes"> Yes, I&rsquo;ll send them over</label>
+            <label><input type="radio" name="has-brand" value="no"> No, please suggest something</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="style-notes">How should the site feel?</label>
+          <span class="hint">E.g. &ldquo;warm and traditional,&rdquo; &ldquo;bold and modern,&rdquo; &ldquo;calm and minimal.&rdquo; Reference websites you like are welcome.</span>
+          <textarea id="style-notes" name="style-notes"></textarea>
+        </div>
+        <div class="field">
+          <label for="competitors">Any competitor or similar business websites we should look at?</label>
+          <input type="text" id="competitors" name="competitors" placeholder="Links, separated by commas">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>6. Contact details</legend>
+        <div class="field">
+          <label for="contact-name">Your name</label>
+          <input type="text" id="contact-name" name="contact-name" required>
+        </div>
+        <div class="field">
+          <label for="contact-email">Email address</label>
+          <input type="email" id="contact-email" name="contact-email" required>
+        </div>
+        <div class="field">
+          <label for="contact-phone">Phone number</label>
+          <input type="tel" id="contact-phone" name="contact-phone">
+        </div>
+        <div class="field">
+          <label class="check-row"><input type="checkbox" name="confirm-eligible" required> I confirm my business meets the eligibility criteria set out on the <a href="eligibility.html">Eligibility &amp; FAQ</a> page.</label>
+        </div>
+      </fieldset>
+
+      <button class="btn btn-primary" type="submit">Submit questionnaire</button>
+      <p id="form-status" role="status" style="display:none; margin-top:18px; max-width:60ch; color:var(--ink-soft);"></p>
+    </form>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="brand" style="margin-bottom:14px;"><svg class="mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<rect x="3" y="14" width="26" height="15" fill="#F7F3E5" stroke="#F7F3E5" stroke-width="1"/>
+<polygon points="16,4 30,14 2,14" fill="#B62428"/>
+<rect x="8" y="19" width="16" height="10" fill="#17233A"/>
+<rect x="10.5" y="21" width="11" height="6" fill="#D6A23C"/>
+</svg>Support Local Growth</div>
+      <p style="max-width:38ch; color:var(--paper); opacity:0.85; font-size:0.92rem;">A subsidised web design scheme for independent UK small businesses. One flat build fee, honest monthly hosting, no contracts that trap you.</p>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="eligibility.html">Eligibility &amp; FAQ</a></li>
+        <li><a href="questionnaire.html">Get started</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get in touch</h4>
+      <ul>
+        <li><a href="mailto:hello@supportlocalgrowth.co.uk">hello@supportlocalgrowth.co.uk</a></li>
+        <li>United Kingdom</li>
+        <li>Mon&ndash;Fri, 9am&ndash;5pm</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 Support Local Growth. A scheme for UK independent businesses.</span>
+    <span>Privacy Policy &middot; Terms &middot; Cookie Notice</span>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
