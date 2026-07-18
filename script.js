@@ -39,26 +39,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Get-started page: six "Confirm & pay" buttons exist (three in the desktop
   // table, three duplicated in the mobile cards — only one set is visible at
-  // a time via CSS). Each carries its own tier value. On click, we set the
-  // hidden _next field to the matching live Stripe Payment Link before the
-  // browser's native form submission fires, so FormSubmit emails the order
-  // details and then sends the customer straight to checkout.
+  // a time via CSS). Each carries its own tier value.
+  //
+  // We no longer rely on FormSubmit's "_next" redirect feature — it doesn't
+  // reliably redirect to a different domain (Stripe), and instead shows
+  // FormSubmit's own generic "Thanks!" page. Instead, we submit the order in
+  // the background via FormSubmit's AJAX endpoint, then drive the redirect
+  // to Stripe ourselves with plain JavaScript. This way the payment redirect
+  // no longer depends on FormSubmit cooperating at all — we control it directly.
   var PAYMENT_LINKS = {
     "self-hosted": "https://buy.stripe.com/bJe6ozdtI1n5784g701Fe01",
     "standard": "https://buy.stripe.com/eVq14f9dsghZ4ZWdYS1Fe00",
     "pro": "https://buy.stripe.com/bJebITexM5Dl0JG4oi1Fe02"
   };
+  var FORMSUBMIT_EMAIL = "robertcbowen@gmail.com";
 
-  var nextInput = document.getElementById('formsubmit-next');
-  document.querySelectorAll('.tier-submit').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var tier = btn.value;
-      if (nextInput && tier && PAYMENT_LINKS[tier]) {
-        nextInput.value = PAYMENT_LINKS[tier];
-      }
-      // No preventDefault — the click still submits the form normally to
-      // FormSubmit, which emails the answers and then redirects to the
-      // _next URL (the Payment Link just set above) automatically.
+  var tierButtons = document.querySelectorAll('.tier-submit');
+  if (tierButtons.length) {
+    tierButtons.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var tier = btn.value;
+        var paymentUrl = PAYMENT_LINKS[tier];
+        var orderForm = btn.closest('form');
+
+        function goToPayment() {
+          if (paymentUrl) {
+            window.location.href = paymentUrl;
+          }
+        }
+
+        if (orderForm) {
+          var formData = new FormData(orderForm);
+          formData.set('tier', tier);
+          fetch('https://formsubmit.co/ajax/' + FORMSUBMIT_EMAIL, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          }).then(goToPayment).catch(goToPayment);
+          // We still redirect even if the background email fails — losing a
+          // copy of the order details is far better than stranding a
+          // paying customer on a broken page.
+        } else {
+          goToPayment();
+        }
+      });
     });
-  });
+  }
 });
