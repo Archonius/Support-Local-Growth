@@ -37,29 +37,28 @@ document.addEventListener('DOMContentLoaded', function () {
     sync();
   });
 
-  // Questionnaire: three "Confirm plan and submit" buttons at the bottom each
-  // carry their own name/value (self-hosted / standard / pro). Before the form
-  // submits to FormSubmit, we set the hidden _next field to the matching live
-  // Stripe Payment Link, so FormSubmit emails the questionnaire answers to
-  // robertcbowen@gmail.com and then sends the customer straight to checkout
-  // for the plan they chose.
+  // Get-started page: six "Confirm & pay" buttons exist (three in the desktop
+  // table, three duplicated in the mobile cards — only one set is visible at
+  // a time via CSS). Each carries its own tier value. On click, we set the
+  // hidden _next field to the matching live Stripe Payment Link before the
+  // browser's native form submission fires, so FormSubmit emails the order
+  // details and then sends the customer straight to checkout.
   var PAYMENT_LINKS = {
     "self-hosted": "https://buy.stripe.com/bJe6ozdtI1n5784g701Fe01",
     "standard": "https://buy.stripe.com/eVq14f9dsghZ4ZWdYS1Fe00",
     "pro": "https://buy.stripe.com/bJebITexM5Dl0JG4oi1Fe02"
   };
 
-  var form = document.querySelector('form.questionnaire');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      var chosenTier = e.submitter && e.submitter.value;
-      var nextInput = document.getElementById('formsubmit-next');
-      if (nextInput && chosenTier && PAYMENT_LINKS[chosenTier]) {
-        nextInput.value = PAYMENT_LINKS[chosenTier];
+  var nextInput = document.getElementById('formsubmit-next');
+  document.querySelectorAll('.tier-submit').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tier = btn.value;
+      if (nextInput && tier && PAYMENT_LINKS[tier]) {
+        nextInput.value = PAYMENT_LINKS[tier];
       }
-      // No preventDefault — the form submits normally to FormSubmit, which
-      // emails the answers and then redirects the customer to the _next URL
-      // (the Payment Link set above) automatically.
+      // No preventDefault — the click still submits the form normally to
+      // FormSubmit, which emails the answers and then redirects to the
+      // _next URL (the Payment Link just set above) automatically.
     });
-  }
+  });
 });
