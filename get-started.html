@@ -175,6 +175,14 @@
           <input type="tel" id="contact-phone" name="contact-phone" required>
         </div>
         <div class="field">
+          <label>Preferred contact method</label>
+          <span class="hint">This is how we&rsquo;ll reach you to finalise your domain and collect any photos or logo.</span>
+          <div class="radio-row">
+            <label><input type="radio" name="contact-method" value="whatsapp" required> WhatsApp <span style="color:var(--gold); font-weight:700;">(preferred)</span></label>
+            <label><input type="radio" name="contact-method" value="email"> Email</label>
+          </div>
+        </div>
+        <div class="field">
           <label for="biz-category">What kind of business is it?</label>
           <select id="biz-category" name="biz-category" required data-reveal-select="biz-category-other" data-reveal-value="other">
             <option value="" disabled selected>Choose a category</option>
