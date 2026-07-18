@@ -109,6 +109,7 @@ p{margin:0 0 1em;}
 .site-header .wrap{
   display:flex; align-items:center; justify-content:space-between;
   padding-top:16px; padding-bottom:16px;
+  position:relative;
 }
 .brand{
   font-weight:800;
@@ -598,4 +599,54 @@ footer a:hover{color:var(--white);}
 .badge{
   font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.03em;
   border:1px solid var(--ink); border-radius:20px; padding:6px 14px;
+}
+
+/* ===========================================================
+   MOBILE-ONLY FIXES
+   Everything below is scoped to max-width media queries.
+   Desktop styling above this point is untouched.
+   =========================================================== */
+
+@media (max-width:900px){
+  html, body{overflow-x:hidden;}
+}
+
+/* Homepage: keep the profession list at 2 columns on mobile (short words,
+   no need to drop to a single column like longer checklist text elsewhere) */
+@media (max-width:640px){
+  .hero-professions .checklist{grid-template-columns:1fr 1fr; gap:4px 10px;}
+  .hero-professions .checklist li{font-size:0.88rem; padding:8px 0;}
+}
+
+/* Homepage: keep "how it works" at 2 columns on small phones instead of
+   dropping to 1, with tighter sizing so it doesn't feel cramped */
+@media (max-width:560px){
+  .steps{grid-template-columns:1fr 1fr; row-gap:22px; column-gap:14px;}
+  .step .icon-badge{width:40px; height:40px; margin-bottom:10px;}
+  .step .icon-badge svg{width:18px; height:18px;}
+  .step .step-num{width:18px; height:18px; font-size:0.62rem;}
+  .step h3{font-size:0.9rem;}
+  .step p{font-size:0.78rem;}
+}
+
+/* Comparison / tier tables: scrollable within their own bounded wrapper so
+   the table can be as wide as it needs without the page itself scrolling
+   sideways, plus condensed sizing so less scrolling is actually needed */
+.table-scroll{width:100%;}
+@media (max-width:760px){
+  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--grey-line);}
+  .table-scroll table.compare, .table-scroll table.tier-table{border:none;}
+  table.compare, table.tier-table{font-size:0.76rem; min-width:560px;}
+  table.compare th, table.compare td, table.tier-table th, table.tier-table td{padding:8px 8px;}
+  table.tier-table .monthly-fee{font-size:1rem;}
+  table.tier-table .tier-submit{font-size:0.72rem; padding:9px 6px;}
+}
+
+/* Get-started page: swap the wide horizontal process diagram for a compact
+   vertical one on mobile, so it doesn't render tiny or force wide scrolling */
+.process-diagram-desktop{display:block;}
+.process-diagram-mobile{display:none;}
+@media (max-width:640px){
+  .process-diagram-desktop{display:none;}
+  .process-diagram-mobile{display:block;}
 }
