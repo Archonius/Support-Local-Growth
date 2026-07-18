@@ -188,13 +188,16 @@ nav.main-nav a.nav-cta:hover{background:#8C6A1B; color:var(--white); border-bott
 .hero-main{max-width:800px;}
 .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:1.8em;}
 .hero-meta{
-  margin-top:2.2em; display:flex; gap:0; flex-wrap:wrap;
+  margin-top:2.2em; display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
   border-top:1px solid var(--grey-line);
 }
 .hero-meta div{
-  font-size:0.85rem; color:var(--ink-soft); padding:16px 28px 0 0; margin-right:28px; border-top:3px solid var(--navy); margin-top:-1px;
+  font-size:0.78rem; color:var(--ink-soft); padding-top:14px; border-top:3px solid var(--navy); margin-top:-1px;
 }
-.hero-meta strong{color:var(--ink); display:block; font-size:1.5rem; font-weight:800; font-family:var(--font-display);}
+.hero-meta strong{color:var(--ink); display:block; font-size:1.2rem; font-weight:800; font-family:var(--font-display); margin-bottom:2px;}
+@media (max-width:560px){
+  .hero-meta{grid-template-columns:1fr 1fr;}
+}
 @media (max-width:900px){
   .hero .wrap{grid-template-columns:1fr;}
 }
@@ -571,18 +574,20 @@ table.tier-table .tier-submit:hover{background:var(--navy-dark);}
 .cta-band .cta-actions{flex:none;}
 
 /* ---------------- footer ---------------- */
-footer.site-footer{background:var(--grey-bg); color:var(--ink); padding:48px 0 24px; border-top:1px solid var(--grey-line);}
+footer.site-footer{background:var(--navy); color:#C7D1E3; padding:48px 0 24px; border-top:4px solid var(--gold);}
 footer .wrap{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px;}
-footer h4{font-weight:700; text-transform:uppercase; font-size:0.8rem; letter-spacing:0.04em; color:var(--ink-soft); margin-bottom:14px;}
+footer h4{font-weight:700; text-transform:uppercase; font-size:0.8rem; letter-spacing:0.04em; color:var(--gold); margin-bottom:14px;}
 footer ul{list-style:none; margin:0; padding:0;}
 footer li{margin-bottom:8px; font-size:0.92rem;}
-footer a{text-decoration:underline; color:var(--ink);}
-footer a:hover{color:var(--blue-link);}
+footer a{text-decoration:underline; color:#C7D1E3;}
+footer a:hover{color:var(--white);}
 .footer-bottom{
-  margin-top:36px; padding-top:20px; border-top:1px solid var(--grey-line);
-  font-size:0.82rem; color:var(--ink-soft);
+  margin-top:36px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.18);
+  font-size:0.82rem; color:#96A3BE;
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
 }
+.footer-bottom a{color:#96A3BE;}
+.footer-bottom a:hover{color:var(--white);}
 @media (max-width:760px){ footer .wrap{grid-template-columns:1fr;} .cta-band .wrap{flex-direction:column; align-items:flex-start;} }
 
 /* ---------------- misc page header ---------------- */
