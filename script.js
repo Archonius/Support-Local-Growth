@@ -50,6 +50,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var PAYMENT_LINKS = {
     "self-hosted": "https://buy.stripe.com/bJe6ozdtI1n5784g701Fe01",
     "standard": "https://buy.stripe.com/eVq14f9dsghZ4ZWdYS1Fe00",
+    // *** ACTION NEEDED ***: this Pro link still charges the old £250 build
+    // fee + £30/mo. Pro's build fee is now FREE under the subsidised scheme
+    // — this URL must be replaced with a new Stripe Payment Link containing
+    // ONLY the £30/mo recurring price (no one-time £250 line item) before
+    // this goes live, or customers will be wrongly charged £250 despite the
+    // "free website" marketing. Not changed here since a new Payment Link
+    // must be created in the Stripe Dashboard first — see chat for details.
     "pro": "https://buy.stripe.com/bJebITexM5Dl0JG4oi1Fe02"
   };
   var FORMSUBMIT_EMAIL = "robertcbowen@gmail.com";
@@ -60,6 +67,20 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
         var tier = btn.value;
+
+        // Pro carries a 12-month minimum term in exchange for a waived build
+        // fee, so we require explicit consent before proceeding — this check
+        // only applies to Pro; Self-Hosted and Standard are unaffected.
+        if (tier === 'pro') {
+          var consent = document.getElementById('pro-consent');
+          if (consent && !consent.checked) {
+            consent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            consent.focus();
+            alert('Please tick the box confirming you understand the Pro 12-month minimum term before continuing.');
+            return;
+          }
+        }
+
         var paymentUrl = PAYMENT_LINKS[tier];
         var orderForm = btn.closest('form');
 
