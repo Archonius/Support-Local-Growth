@@ -68,19 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         var tier = btn.value;
 
-        // Pro carries a 12-month minimum term in exchange for a waived build
-        // fee, so we require explicit consent before proceeding — this check
-        // only applies to Pro; Self-Hosted and Standard are unaffected.
-        if (tier === 'pro') {
-          var consent = document.getElementById('pro-consent');
-          if (consent && !consent.checked) {
-            consent.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            consent.focus();
-            alert('Please tick the box confirming you understand the Pro 12-month minimum term before continuing.');
-            return;
-          }
-        }
-
         var paymentUrl = PAYMENT_LINKS[tier];
         var orderForm = btn.closest('form');
 
