@@ -216,13 +216,9 @@ nav.main-nav a.nav-cta:hover{background:#8C6A1B; color:var(--white); border-bott
 
 /* ---------------- hero free-website ticket graphic ---------------- */
 .free-ticket-wrap{margin-bottom:24px;}
+.free-ticket-wrap a{display:inline-block; width:88%; text-decoration:none; transition:transform 0.15s ease;}
+.free-ticket-wrap a:hover{transform:translateY(-2px);}
 .free-ticket-wrap svg{width:100%; height:auto; display:block; filter:drop-shadow(var(--shadow-sm));}
-.free-ticket-link{
-  display:inline-block; margin-top:10px; font-weight:700; font-size:0.9rem;
-  color:var(--navy); text-decoration:none;
-}
-.free-ticket-link:hover{color:var(--blue-link); text-decoration:underline;}
-
 /* ---------------- trust badges ---------------- */
 .trust-badges{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:28px;}
 .trust-badge{
